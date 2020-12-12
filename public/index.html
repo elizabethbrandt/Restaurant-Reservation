@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Reservation</title>
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="./assets/styles/styles.css">
+</head>
+
+<body>
+    <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script>
+        /// Use jQuery to run AJAX calls to GET and POST data from users to the Express server ///
+        $.get("./").then((data) => {
+            //TODO: check that the path is correct.
+            //TODO: do something with this data.
+        })
+
+        //TODO: get the row data.
+        const tableRow = {}
+        $.post("/table", tableRow).then(data => {
+            console.log({data})
+            //TODO: do something with this data.
+        })
+    </script>
+</body>
+
+</html>
