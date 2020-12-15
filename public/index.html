@@ -7,12 +7,15 @@
     <title>Restaurant Reservation</title>
 
     <!-- STYLES -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/styles/styles.css">
 </head>
 
 <body>
     <!-- SCRIPTS -->
     <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script>
         /// Use jQuery to run AJAX calls to GET and POST data from users to the Express server ///
         $.get("./").then((data) => {
@@ -23,7 +26,7 @@
         //TODO: get the row data.
         const tableRow = {}
         $.post("/table", tableRow).then(data => {
-            console.log({data})
+            console.log({ data })
             //TODO: do something with this data.
         })
     </script>
