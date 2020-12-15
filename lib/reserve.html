@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Reservation</title>
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="container">
+            <div class="jumbotron jumbotron-fluid text-center">
+                <h1 class="border-bottom">Hot Restaurant</h1>
+                <h3>Make Your Reservation</h3>
+                <a href="/tables" type="button" class="btn btn-danger">View Reservations</a>
+                <a href="/" type="button" class="btn btn-primary">Home</a>
+            </div>
+    
+            <div class="card">
+                <form method="post" class="card-body">
+                    <input type="text" id='name' class="input-group" placeholder="Name"><br>
+                    <input type="text" id='phone' class="input-group" placeholder="Phone Number"><br>
+                    <input type="text" id='email' class="input-group" placeholder="Email"><br>
+                    <input type="text" id='id' class="input-group" placeholder="Unique ID"><br>
+                    <div type="button" id='submitForm' class="btn btn-primary">Make Reservation</div>
+                </form>
+            </div>
+    
+            <div>
+                <a href="/api/reservations">API Table Link</a> | <a href="/api/waitlist">API Wait List</a>
+            </div>
+        </div>
+    <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        $('#submitForm').on('click', event => {
+            const person = {
+                name: $('#name').val().trim(),
+                phone: $('#phone').val().trim(),
+                email: $('#email').val().trim(),
+                id: $('#id').val().trim()
+            }
+            $('form')[0].reset()
+            $.post("./reserve", person)
+        })
+    </script>
+</body>
+
+</html>

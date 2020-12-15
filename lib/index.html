@@ -9,27 +9,25 @@
     <!-- STYLES -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./assets/styles/styles.css">
+    <link rel="stylesheet" href="../public/assets/styles/styles.css">
 </head>
 
 <body>
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid text-center">
+            <h1 class="border-bottom">Hot Restaurant</h1>
+            <h3>We only have 5 tables! Book your seat before they all are gone!</h3>
+            <a href="/tables" type="button" class="btn btn-primary">View Tables</a>
+            <a href="/reserve" type="button" class="btn btn-danger">Make Reservation</a>
+        </div>
+        <div>
+            <a href="/api/reservations">API Table Link</a> | <a href="/api/waitlist">API Wait List</a>
+        </div>
+    </div>
+
     <!-- SCRIPTS -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script>
-        /// Use jQuery to run AJAX calls to GET and POST data from users to the Express server ///
-        $.get("./").then((data) => {
-            //TODO: check that the path is correct.
-            //TODO: do something with this data.
-        })
-
-        //TODO: get the row data.
-        const tableRow = {}
-        $.post("/table", tableRow).then(data => {
-            console.log({ data })
-            //TODO: do something with this data.
-        })
-    </script>
 </body>
 
 </html>

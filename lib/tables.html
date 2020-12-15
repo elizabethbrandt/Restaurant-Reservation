@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Reservation</title>
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid text-center">
+            <h1 class="border-bottom">Hot Restaurant</h1>
+            <h3>Current Reservations and Waiting List</h3>
+            <a href="/reserve" type="button" class="btn btn-danger">Make Reservation</a>
+            <a href="/" type="button" class="btn btn-primary">Home</a>
+        </div>
+            <h3>Reservations</h3>
+            <div id="reservations">
+            </div><br>
+            <h3>Waitlist</h3>
+            <div id="waitlist">
+            </div><br>
+        <div>
+        <a id="clear-table" href="">Clear Table</a> | <a href="/api/reservations">API Table Link</a> | <a href="/api/waitlist">API Wait List</a>
+        </div>
+    </div>
+    
+    <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        function addPerson(list, {name, phone, email, id}) {
+            list.append(`<div><strong>${name}</strong> - <em>${phone.replace(/(.{3})(.{3})(.{4})/, '($1) $2-$3')}</em></div>`)
+        }
+        function buildLists(data) {
+            const reservations = $('#reservations')
+            reservations.html('')
+            for (const person of data.reservations) {
+                addPerson(reservations, person)
+            }
+            
+            const waitlist = $('#waitlist')
+            waitlist.html('')
+            for (const person of data.waitlist) {
+                addPerson(waitlist, person)
+            }
+        }
+
+        $.get("./api/tables").then(buildLists)
+
+        $('#clear-table').on('click', event => {
+            const confirmed = confirm('You are about to clear remove all of the reservations. Are you sure this is what you want to do?')
+
+            if (confirmed) {
+                $.post('/clear-tables', true).then(buildLists)
+            }
+        })
+    </script>
+</body>
+
+</html>
